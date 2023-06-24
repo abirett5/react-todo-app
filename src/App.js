@@ -24,6 +24,11 @@ const App = () => {
     }
   }
 
+  const handleDelete = (id) => {
+    const delTodo = todos.filter((to) => to.id !== id);
+    setTodos([...delTodo]);
+  }
+
   return (
     <div className="App">
       {
@@ -50,9 +55,9 @@ const App = () => {
               todos.map((t) => (
 
                 <li className="singleTodo">
-                  <span className="todoText">{t.todo}</span>
+                  <span className="todoText" key={t.id}>{t.todo}</span>
                   <button>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={() => handleDelete(t.id)}>Delete</button>
                 </li>
               ))
             }
